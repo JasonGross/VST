@@ -47,7 +47,7 @@ endif
 # ZLIST=bundled      (default, build and use bundled zlist)
 #
 # # Choosing BITSIZE #
-# BITSIZE=32 
+# BITSIZE=32
 # BITSIZE=64
 #
 # # Choosing ARCHITECTURE #
@@ -67,7 +67,7 @@ endif
 # # User settable variables #
 COMPCERT ?= platform
 ZLIST ?= bundled
-ARCH ?= 
+ARCH ?=
 BITSIZE ?=
 
 # # Internal variables #
@@ -90,7 +90,7 @@ ifeq ($(COMPCERT),platform)
     COMPCERT_EXPLICIT_PATH = false
   else ifeq ($(BITSIZE),32)
     COMPCERT_INST_DIR = $(COQLIB)/../coq-variant/compcert32/compcert
-  else 
+  else
     $(error ILLEGAL BITSIZE $(BITSIZE))
   endif
   COMPCERT_SRC_DIR = __NONE__
@@ -171,7 +171,7 @@ else
   ifeq ($(wildcard $(COMPCERT_INST_DIR)/compcert.config),)
     $(error Cannot find compcert.config in $(COMPCERT_INST_DIR))
   endif
-  
+
   include $(COMPCERT_INST_DIR)/compcert.config
 
   ifneq ($(BITSIZE),)
@@ -230,12 +230,12 @@ FLOCQ=         # this mode to use the flocq packaged with Coq or opam
 
 # ##### Configure installation folder #####
 #  1. (if present) the VST installation for reasoning about 64-bit C programs
-#     on the host  architecture will be in $(COQLIB)/user-contrib/VST, 
-#  2. (if present) the VST installation for reasoning about 32 C programs 
-#    for the 32-bit analogue of the host architecture 
+#     on the host  architecture will be in $(COQLIB)/user-contrib/VST,
+#  2. (if present) the VST installation for reasoning about 32 C programs
+#    for the 32-bit analogue of the host architecture
 #    will be in $(COQLIB)/../coq-variant/VST32/VST
 #  3. (if present) a VST installation for reasoning about C programs compiled
-#     for a _different_ architecture will be in 
+#     for a _different_ architecture will be in
 #     $(COQLIB)/../coq-variant/VST_otherarch_bitsize/VST
 #  Not all of this logic is right here in this makefile; some of it is done
 #  in the CompCert install, in choosing how to configure CompCert itself,
@@ -722,14 +722,14 @@ ifeq ($(BITSIZE),64)
 test: vst progs64
 	@# need this tab here to turn of special behavior of 'test' target
 test2: io
-test4: mailbox 
+test4: mailbox
 tests: test test2 test4
 all: tests
 else
 test: vst progs
 	@# need this tab here to turn of special behavior of 'test' target
 test2: io
-test3: sha hmac 
+test3: sha hmac
 test5: VSUpile
 tests: test test2 test3 test5
 all: vst files tests hmacdrbg tweetnacl aes
@@ -950,4 +950,3 @@ assumptions.txt: veric/tcb.vo
 # such problem, not sure exactly.  -- Andrew)
 include .depend
 -include .depend-concur
-
